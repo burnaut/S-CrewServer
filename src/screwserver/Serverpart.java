@@ -89,7 +89,7 @@ public class Serverpart {
 		InputStream i=null;
 		OutputStream o=null;
 		ObjectInputStream ois=null;
-		char[] cbuf = new char [1000];
+		char[] cbuf = new char [100];
 		HashMap<String,Number> anzahluser = null;
 		try {
 			serversocket = new ServerSocket(port);
@@ -127,13 +127,7 @@ public class Serverpart {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-	//Ende try catch
-	pw= new PrintWriter(fw);
-	pw.write("Hello this is a test");
-	pw.flush();
 	br=new BufferedReader(fr);
-	
-	
 	for(int x=0; x<cbuf.length;x++){
 		try {
 			
@@ -144,6 +138,14 @@ public class Serverpart {
 			e.printStackTrace();
 		}//Ende try catch
 	}
+	//Ende try catch
+	pw= new PrintWriter(fw);
+	pw.write("Hello this is a test"+cbuf);
+	pw.flush();
+	
+	
+	
+	
 	
 	for (int y=0; y<cbuf.length;y++){
 		System.out.println(cbuf[y]);
