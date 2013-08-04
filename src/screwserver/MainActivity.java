@@ -22,7 +22,8 @@ public class MainActivity {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Serverpart serveranfrage=new Serverpart();
-		serveranfrage.neuerserversocket(5543);
+		serveranfrage.neuerserversocket(5544);
+//		serveranfrage.bildereinspeichern();
 	}
 
 }
