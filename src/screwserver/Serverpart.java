@@ -140,16 +140,8 @@ public class Serverpart {
 	}
 	//Ende try catch
 	pw= new PrintWriter(fw);
-	pw.write("Hello this is a test"+cbuf);
+	pw.write("Hello this is a test"+anzahluser);
 	pw.flush();
-	
-	
-	
-	
-	
-	for (int y=0; y<cbuf.length;y++){
-		System.out.println(cbuf[y]);
-	}
 	try {
 		ois= new ObjectInputStream(i);
 	} catch (IOException e) {
