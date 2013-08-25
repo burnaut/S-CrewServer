@@ -91,6 +91,7 @@ public class Serverpart {
 		ObjectInputStream ois=null;
 		char[] cbuf = new char [100];
 		HashMap<String,Number> anzahluser = null;
+		HashMap<String,String> behelfsmap=null;
 		try {
 			serversocket = new ServerSocket(port);
 		} catch (IOException e1) {
@@ -102,7 +103,7 @@ public class Serverpart {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} //Zu Testzwecken ausgehebelt da es blockiert :)
+		} 
 	//Ende try catch
 	
 	try {
@@ -149,18 +150,84 @@ public class Serverpart {
 		e.printStackTrace();
 	}
 	//Ende try catch
-	try {
-		anzahluser=(HashMap<String, Number>) ois.readObject();
-	} catch (ClassNotFoundException | IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	System.out.println(anzahluser);
+	behelfsmap=(HashMap<String, String>)ois.readObject();
+//	try {
+//		anzahluser=(HashMap<String, Number>) ois.readObject();
+//	} catch (ClassNotFoundException | IOException e) {
+//		// TODO Auto-generated catch block
+//		e.printStackTrace();
+//	}
+//	System.out.println(anzahluser);
+	System.out.println(behelfsmap);
+//	switch (behelfsmap.getKey())
+//	{
+//	case "Sebastian":
+//		fw= new FileWriter("Sebastian_Bestellung.txt");
+//		pw = new PrintWriter(fw);
+//		pw.write(behelfsmap.get("Sebastian"));
+//		pw.flush();
+//	case "Mozez":
+//		fw= new FileWriter("Moritz_Thelenberg_Bestellung.txt");
+//		pw = new PrintWriter(fw);
+//		pw.write(behelfsmap.get("Mozez"));
+//		pw.flush();
+//	case "David":
+//		fw= new FileWriter("David_Bestellung.txt");
+//		pw = new PrintWriter(fw);
+//		pw.write(behelfsmap.get("David"));
+//		pw.flush();
+//	case "Moritz":
+//	    fw= new FileWriter("Moritz_Müller_Bestellung.txt");
+//	    pw = new PrintWriter(fw);
+//	    pw.write(behelfsmap.get("Moritz"));
+//	    pw.flush();
+//	case "Oliver":
+//		fw= new FileWriter("Oliver_Bestellung.txt");
+//		pw = new PrintWriter(fw);
+//		pw.write(behelfsmap.get("Oliver"));
+//		pw.flush();
+//	case "Gabriel":
+//		fw= new FileWriter("Gabriel_Bestellung.txt");
+//		pw = new PrintWriter(fw);
+//		pw.write(behelfsmap.get("Gabriel"));
+//		pw.flush();
+//	case "Jörg":
+//		fw= new FileWriter("Jörg_Bestellung.txt");
+//		pw = new PrintWriter(fw);
+//		pw.write(behelfsmap.get("Jörg"));
+//		pw.flush();
+//	case "Lukas":
+//		fw= new FileWriter("Lukas_Bestellung.txt");
+//		pw = new PrintWriter(fw);
+//		pw.write(behelfsmap.get("Lukas"));
+//		pw.flush();
+//	case"Andreas":
+//		fw= new FileWriter("Andreas_Bestellung.txt");
+//		pw = new PrintWriter(fw);
+//		pw.write(behelfsmap.get("Andreas"));
+//		pw.flush();
+//	}
+	fw = new FileWriter (behelfsmap.KeySet()+"_Bestellung.txt");
+	pw = new PrintWriter(fw);
+	pw.write(behelfsmap.get(behelfsmap.KeySet()));
+	pw.flush();
+	fr = new FileReader (behelfsmap.KeySet()+"_Bestellung.txt");
+	
+	//zu testzwecken sys.out
+	System.out.println(fr.read());
 	try {
 		clientside.close();
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
+	}
+	try{
+		
+		serversocket.close();
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
+	
 	}
 	}
 		
